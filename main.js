@@ -80,6 +80,12 @@ const app = {
     singer: 'RPT MCK, Obito, Ronboogz & Boyzed',
     path:'./music/song8.mp3',
     image:'./img/song8.jpg'
+},
+{
+    name:'Western Feel',
+    singer: 'Bartel Union',
+    path:'./music/song9.mp3',
+    image:'./img/song9.jpg'
 }
 ],
 setConfig:function(key,value){
