@@ -13,13 +13,53 @@
 
 </head>
 <body>
+ 
+  <div class="main">
+    <div class="modal" onclick="TimeLine()"></div>
+    <div class="time">
+      <div class="timeline">
+      
+        <div class="form" style="display:flex; justify-content: center; height: 100%; align-items: center;">
+          <div class="form-radio">
+            <div>
+              <input id="time_1" name="time" type="radio" value="1" > 1 phút
+            </div>
+            <div>
+              <input id="time_15" name="time" type="radio" value="15" > 15 phút
+            </div>
+            <div>
+              <input id="time_30" name="time" type="radio" value="30" > 30 phút
+            </div>
+            <div>
+              <input id="time_60" name="time" type="radio" value="60" > 1 tiếng
+            </div>
+            <div>
+              <input id="time_120" name="time" type="radio" value="120" > 2 tiếng
+            </div>
+            <div>
+              <input id="time_120" name="time" type="radio" value="close" > Tắt
+            </div>
+          </div>             
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="player">
   <!-- Dashboard -->
   <div class="dashboard">
     <!-- Header -->
-    <header>
-      <h4>Now playing:</h4>
-      <h2>String 57th & 9th</h2>
+    <header style="display: flex; justify-content: center; align-items: center;">
+      <div>
+        <i class="fas fa-angle-down" style="width: 30px;"></i>
+      </div>
+      <div style="margin-right: auto; margin-left: auto;">
+        <h4>Now playing:</h4>
+        <h2>String 57th & 9th</h2>
+      </div>
+      <div onclick="TimeLine()">
+        <i class="fas fa-clock" ></i>
+      </div>
+    
     </header>
 
     <!-- CD -->
@@ -59,9 +99,60 @@
   </div>
 </div>
 
+ 
+
+<script>
+ function TimeLine(){
+   var times = document.querySelector('.main')
+   times.classList.toggle('dblock')
+ }
+ var checkboxes = document.getElementsByName('time');
+var intervals = [];
+
+for (var i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].onclick = (function(index) { 
+    return function() {
+      clearIntervalAllIntervals();
+     
+      var times = checkboxes[index].value;
+      if(times=='close'){
+        clearInterval(interval);
+        clearIntervalAllIntervals();
+      }else{
+        var clock = times * 60;
+        var interval = setInterval(function() {
+          var a = --clock;
+          console.log(a);
+          if (a === 0) {
+            audio.pause();
+            clearInterval(interval);
+          }
+          
+        }, 1000);
+      }
+
+      intervals.push(interval);
+    };
+  })(i);
+ 
+}
+
+function clearIntervalAllIntervals() {
+  for (var i = 0; i < intervals.length; i++) {
+    clearInterval(intervals[i]);
+  }
+  intervals = [];
+}
 
 
  
+    
+ 
+
+      
+
+</script>
+
 
 <script src='./main.js'></script>
 

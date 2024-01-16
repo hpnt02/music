@@ -26,6 +26,9 @@ const nextBTN = $('.btn-next')
 const randomBTN = $('.btn-random')
 const repeatBTN = $('.btn-repeat')
 const playlist = $('.playlist')
+
+
+
 const app = {
     currentIndex:0,
     isPlaying: false,
@@ -86,6 +89,18 @@ const app = {
     singer: 'Bartel Union',
     path:'./music/song9.mp3',
     image:'./img/song9.jpg'
+},
+{
+    name:'dự báo thời tiết hôm nay mưa',
+    singer: 'GREY D',
+    path:'./music/song10.mp3',
+    image:'./img/song10.jpg'
+},
+{
+    name:'Under The Influence',
+    singer: 'Chris Brown',
+    path:'./music/song11.mp3',
+    image:'./img/song11.jpg'
 }
 ],
 setConfig:function(key,value){
@@ -196,8 +211,7 @@ handleEvents:function(){
         }else{
        
             _this.prevSong()
-        }
-       
+        }      
         audio.play()
         _this.render()
         _this.scrollToActionSong()
@@ -223,7 +237,10 @@ handleEvents:function(){
             nextBTN.onclick();
         }
     }
-
+  
+    //Thiết lập thời gian tự động tắt
+ 
+   
     //Lăng nghe hành vi click vào playlist
     playlist.onclick= function(e){
         const songNode = e.target.closest('.song:not(.active)')
@@ -251,6 +268,10 @@ scrollToActionSong:function(){
     },300)
 
 },
+
+timeLine:function(){
+
+},
 loadtCurrentSong:function(){
 heading.textContent = this.currentSong.name
 cdThumb.style.backgroundImage =` url('${this.currentSong.image}')`
@@ -276,6 +297,8 @@ prevSong:function(){
     }
     this.loadtCurrentSong()
 },
+
+
 playRandomSong:function(){
     let newIndex
     do{
