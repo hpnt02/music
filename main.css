@@ -214,7 +214,7 @@
    position: absolute;
   }
   .time{
-    width: 500px;
+   max-width: 480px;
     height: 100%;
     margin: auto;
     display: flex;
@@ -223,7 +223,7 @@
   }
 
   .timeline{
-   width: 70%;
+   width: 100%;
    height: 200px;
  background-color: white;
     z-index: 1;
